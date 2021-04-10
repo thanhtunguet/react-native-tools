@@ -1,10 +1,85 @@
 {
-  
-  
   "version": 2,
-  
-  "projects": {},
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/node"
+  },
+  "defaultProject": "react-native-asset-cleaner",
+  "projects": {
+    "react-native-asset-cleaner": {
+      "root": "apps/react-native-asset-cleaner",
+      "sourceRoot": "apps/react-native-asset-cleaner/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/react-native-asset-cleaner",
+            "main": "apps/react-native-asset-cleaner/src/main.ts",
+            "tsConfig": "apps/react-native-asset-cleaner/tsconfig.app.json",
+            "assets": [
+              "apps/react-native-asset-cleaner/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/react-native-asset-cleaner/src/environments/environment.ts",
+                  "with": "apps/react-native-asset-cleaner/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "react-native-asset-cleaner:build"
+          }
+        },
+        "run": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "react-native-asset-cleaner:serve",
+            "args": [
+              "--help"
+            ]
+          }
+        },
+        "publish": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "react-native-asset-cleaner:build",
+            "args": [
+              "publish"
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/react-native-asset-cleaner/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/react-native-asset-cleaner"
+          ],
+          "options": {
+            "jestConfig": "apps/react-native-asset-cleaner/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
   }
 }

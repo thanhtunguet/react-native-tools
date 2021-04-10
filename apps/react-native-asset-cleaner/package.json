@@ -1,0 +1,24 @@
+{
+  "name": "react-native-asset-cleaner",
+  "version": "1.0.0",
+  "main": "./main.js",
+  "license": "MIT",
+  "private": false,
+  "author": {
+    "name": "thanhtunguet",
+    "email": "ht@thanhtunguet.info",
+    "url": "https://github.com/thanhtunguet/react-native-tools/"
+  },
+  "repository": {
+    "url": "https://github.com/thanhtunguet/react-native-tools",
+    "directory": "apps/react-native-asset-cleaner"
+  },
+  "bin": {
+    "asset-cleaner": "./main.js"
+  },
+  "description": "Asset cleaner for React Native",
+  "scripts": {
+    "test": "jest",
+    "asset-cleaner": "./main.js"
+  }
+}
