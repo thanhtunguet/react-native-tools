@@ -44,12 +44,9 @@
           }
         },
         "run": {
-          "executor": "@nrwl/node:execute",
+          "builder": "@nrwl/workspace:run-commands",
           "options": {
-            "buildTarget": "react-native-asset-cleaner:serve",
-            "args": [
-              "--help"
-            ]
+            "command": "node dist/apps/react-native-asset-cleaner/main.js"
           }
         },
         "publish": {

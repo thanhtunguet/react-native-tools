@@ -24,3 +24,23 @@ Options:
   -s, --source <source-dir>  Source folder
   -h, --help                 display help for command
 ```
+
+## Convention
+- Place the asset folder outside of src
+- Setup `babel-plugin-module-resolve` to use absolutely import:
+  ```tsx
+  require('assets/images/test-image.png');
+  ```
+- Also setup `paths` config for Typescript.
+  ```json
+  {
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "assets/*": [
+          "./assets/*"
+        ]
+      }
+    }
+  }
+  ```
